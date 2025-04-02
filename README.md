@@ -81,6 +81,14 @@ Based on my analysis, I selected the following three approaches:
 4. **Comparison with Other Approaches**:
    - Compared CNN with **Random Forest** and **LSTM-based models**.
    - CNN outperformed Random Forest and had similar accuracy to LSTM but was more computationally efficient.
+  
+
+## Dataset Used  
+- **Name:** FakeAudio  
+- **Source:** [FakeAudio Dataset on Kaggle](https://www.kaggle.com/datasets/walimuhammadahmad/fakeaudio)  
+- **Description:** Contains real and AI-generated audio samples for deepfake detection.
+
+
 
 ## Part 3: Documentation & Analysis
 
