@@ -6,47 +6,53 @@ I reviewed the GitHub repository on audio deepfake detection:
 **[Audio-Deepfake-Detection](https://github.com/media-sec-lab/Audio-Deepfake-Detection)**  
 Based on my analysis, I selected the following three approaches:
 
-### **1. Wav2Vec 2.0-Based Detection**
+### **1. AASIST: Audio Anti-Spoofing Using Integrated Spectro-Temporal Graph Attention Networks**
 - **Key Technical Innovation**:
-  - Self-supervised learning-based feature extraction.
-  - Fine-tuned for deepfake detection.
+  - Introduces spectro-temporal graph attention networks, integrating heterogeneous stacking graph attention layers.
+  - Enhances feature extraction by modeling spectral and temporal patterns simultaneously.
+  - Utilizes a stack node attention mechanism to improve spoofing artifact detection.
 - **Reported Performance Metrics**:
-  - Accuracy: 95%+ on ASVspoof datasets.
-  - Robust against noise and distortions.
+  - Equal Error Rate (EER): 0.83% (ASVspoof 2019 LA dataset).
+  - Tandem Detection Cost Function (t-DCF): 0.028.
 - **Why This Approach?**
-  - Effective for detecting subtle differences in AI-generated speech.
-  - Works well with real-time applications.
+  - The graph-based attention mechanism makes it highly effective in detecting synthetic modifications
+  - Strong generalization ability across different types of deepfake audio.
+  - Well-suited for real-time detection due to its efficient feature extraction process.
 - **Challenges**:
-  - Requires large-scale pretraining.
-  - Computationally expensive.
+  - High computational cost for training, which may require specialized hardware.
+  - Performance can degrade if applied to unseen deepfake types not represented in the training data.
 
-### **2. CNN-Based Deepfake Detection**
+### **2. End-to-End Anti-Spoofing with RawNet2**
 - **Key Technical Innovation**:
-  - Convolutional Neural Networks (CNNs) for frequency-domain feature extraction.
-  - Uses spectrograms (MFCCs or Mel spectrograms) as input.
+  - Processes raw audio waveforms directly, eliminating the need for handcrafted feature extraction.
+  - Leverages a CNN-based deep learning pipeline for automated feature learning.
+  - Improves robustness to unseen spoofing techniques by focusing on end-to-end representation learning.
 - **Reported Performance Metrics**:
-  - Accuracy: 90-93% on ASVspoof datasets.
-  - Computationally efficient.
+  - Equal Error Rate (EER): 1.12%.
+  - Tandem Detection Cost Function (t-DCF): 0.033.
 - **Why This Approach?**
-  - Strong generalization on unseen deepfake attacks.
-  - Suitable for real-time and low-latency scenarios.
+  - Lightweight architecture, making it ideal for real-time and low-latency applications.
+  - Simplifies preprocessing by directly working with waveform data.
+  - Generalizes well across different datasets, reducing overfitting to specific spoofing techniques.
 - **Challenges**:
-  - Sensitive to noise.
-  - Needs augmentation for better robustness.
+  - May require larger datasets for training to enhance performance on unseen deepfake techniques.
+  - Direct waveform processing can lead to overfitting on limited training samples if not regularized properly.
 
-### **3. LSTM-Based Sequential Modeling**
+### **3. One-Class Learning for Synthetic Voice Spoofing Detection**
 - **Key Technical Innovation**:
-  - Long Short-Term Memory (LSTM) for temporal feature extraction.
-  - Captures sequential dependencies in audio data.
+  - Uses one-class learning with an OC-Softmax loss function to model bona fide speech distributions.
+  - Detects spoofing by identifying deviations from the learned distribution of real human speech.
+  - Focuses on anomaly detection, making it suitable for identifying unknown deepfake attacks.
 - **Reported Performance Metrics**:
-  - Accuracy: 88-92% on ASVspoof datasets.
+  - Equal Error Rate (EER): 2.19%.
   - Handles varying speech patterns.
 - **Why This Approach?**
-  - Detects fine-grained variations in AI-generated speech.
-  - Effective in analyzing real conversations.
+  - Can detect unknown spoofing attacks that were not present in the training set.
+  - Works well for applications where deepfake patterns continuously evolve and new spoofing methods appear.
+  - Lower computational requirements compared to fully supervised deep learning approaches.
 - **Challenges**:
-  - Training complexity is high.
-  - Prone to overfitting on small datasets.
+  - Performance is slightly lower than state-of-the-art fully supervised models.
+  - Sensitivity to outliers: may produce false positives for natural speech variations not included in training.
  
 
 
