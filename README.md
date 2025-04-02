@@ -9,10 +9,10 @@ I reviewed the GitHub repository on audio deepfake detection:
 Based on my analysis, I selected the following three approaches:
 
 1. Wav2Vec 2.0-Based Detection
-Key Technical Innovation:
+a. Key Technical Innovation:
   - Self-supervised learning-based feature extraction.
   - Fine-tuned for deepfake detection.
-Reported Performance Metrics:
+b. Reported Performance Metrics:
   - Accuracy: 95%+ on ASVspoof datasets.
   - Robust against noise and distortions.
 Why This Approach?
